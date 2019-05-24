@@ -1,0 +1,31 @@
+version: "3.7"
+services:
+  frontend:
+     build: /var/jenkins_home/workspace/frontend
+  mysql:
+    image: mysql:5.7
+    environment:
+      -  MYSQL_ROOT_PASSWORD=password
+      -  MYSQL_DATABASE=accounts_list
+    volumes:
+      - type: volume
+        source: mysqldataa
+        target: /var/lib/mysql
+  backend:
+    image: alinawazmamdani/backend
+    depends_on:
+      - mysql
+
+  nginx:
+    build: ./nginx
+    ports:
+      - target: 80
+        published: 80
+        protocol: tcp
+    depends_on:
+      - frontend
+      - backend
+
+volumes:
+  mysqldataa:
+

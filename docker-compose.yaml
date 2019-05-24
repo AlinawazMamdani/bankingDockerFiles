@@ -1,7 +1,5 @@
 version: "3.7"
 services:
-  frontend:
-     build: /var/jenkins_home/workspace/frontend
   mysql:
     image: mysql:5.7
     environment:
@@ -23,7 +21,6 @@ services:
         published: 80
         protocol: tcp
     depends_on:
-      - frontend
       - backend
 
 volumes:

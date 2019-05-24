@@ -10,7 +10,7 @@ services:
         source: mysqldataa
         target: /var/lib/mysql
   backend:
-    image: alinawazmamdani/backend
+    build: /var/jenkins_home/workspace/backend/
     depends_on:
       - mysql
 

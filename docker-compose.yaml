@@ -24,6 +24,7 @@ services:
         protocol: tcp
     depends_on:
       - backend
+      - frontend
 
 volumes:
   mysqldataa:
